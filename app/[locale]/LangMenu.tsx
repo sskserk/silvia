@@ -1,4 +1,3 @@
-'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -13,69 +12,38 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import LeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { ForkLeft } from '@mui/icons-material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import LangMenuDrawer from './LangMenu';
 import LanguageIcon from '@mui/icons-material/Language';
+//import SvgIcon from '@mui/icons/material/SvgIcon';
 
-const drawerWidth = 300;
 
-export default function ResponsiveDrawer() {
-    const theme = useTheme();
-    const isWide = useMediaQuery('(min-width:600px)');
+
+
+export default function LangMenuDrawer() {
     const [open, setOpen] = React.useState(false);
+    // Menu content for both modes
+    const menuItems1 = ['Inbox', 'Starred', 'Send email', 'Drafts'];
+    const menuItems2 = ['All mail', 'Trash', 'Spam'];
+
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
 
-    // Menu content for both modes
-    const menuItems1 = ['Inbox', 'Starred', 'Send email', 'Drafts'];
-    const menuItems2 = ['All mail', 'Trash', 'Spam'];
-
-    if (isWide) {
-        // Horizontal static menu (AppBar-like)
-        return (
-            <Box sx={{ width: '100%', bgcolor: 'background.paper', borderBottom: '1px solid #eee', display: 'flex', flexDirection: 'row', alignItems: 'center', px: 2, py: 1 }}>
-                <List sx={{ display: 'flex', flexDirection: 'row', p: 0, m: 0 }}>
-                    {menuItems1.map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ width: 'auto' }}>
-                            <ListItemButton sx={{ px: 2 }}>
-                                <ListItemIcon sx={{ minWidth: 32 }}>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
-                <List sx={{ display: 'flex', flexDirection: 'row', p: 0, m: 0 }}>
-                    {menuItems2.map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ width: 'auto' }}>
-                            <ListItemButton sx={{ px: 2 }}>
-                                <ListItemIcon sx={{ minWidth: 32 }}>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Box>
-        );
-    }
-
     // Drawer for small screens
     const DrawerList = (
-        <Box sx={{ width: 250, position: 'relative' }} role="presentation">
+        <Box sx={{ width: 250 }} role="presentation">
             <IconButton
                 aria-label="close drawer"
                 onClick={toggleDrawer(false)}
                 sx={{ position: 'absolute', top: 8, left: 8 }}
                 size="large"
             >
-                <CloseIcon />
+
+                <LeftIcon />
             </IconButton>
             <List sx={{ mt: 5 }}>
                 {menuItems1.map((text, index) => (
@@ -102,14 +70,38 @@ export default function ResponsiveDrawer() {
                     </ListItem>
                 ))}
             </List>
-            <LangMenuDrawer/>
+            <LangMenuDrawer />
         </Box>
     );
 
     return (
         <div>
-            <Button onClick={toggleDrawer(true)}>=</Button>
-            <Drawer open={open} onClose={toggleDrawer(false)}>
+            <ListItemButton onClick={toggleDrawer(true)} >
+                <ListItemIcon >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#000000"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="7.5" />
+                        {/* Symmetric longitude lines */}
+                        <path d="M12 4.5 C15.5 8.5 15.5 15.5 12 19.5" />
+                        <path d="M12 4.5 C8.5 8.5 8.5 15.5 12 19.5" />
+                        {/* Latitude lines */}
+                        <path d="M5 9.5h14" />
+                        <path d="M5 14.5h14" />
+                    </svg>
+                </ListItemIcon>
+            </ListItemButton>
+
+
+            <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
                 {DrawerList}
             </Drawer>
         </div>
