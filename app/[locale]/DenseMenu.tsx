@@ -17,6 +17,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import LangMenuDrawer from './LangMenu';
 import LanguageIcon from '@mui/icons-material/Language';
+import { Avatar } from '@mui/material';
+
 
 const drawerWidth = 300;
 
@@ -102,6 +104,9 @@ export default function ResponsiveDrawer() {
                     </ListItem>
                 ))}
             </List>
+            <Box>
+                <Avatar src="./avatar.png" alt="Avatar" sx={{ border: "1px solid #1f1f1f" }}/>
+            </Box>
             <LangMenuDrawer/>
         </Box>
     );

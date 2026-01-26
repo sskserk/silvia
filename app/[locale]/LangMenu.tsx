@@ -41,7 +41,7 @@ export default function LangMenuDrawer() {
                 onClick={toggleDrawer(false)}
                 sx={{ position: 'absolute', top: 8, left: 8 }}
                 
-                style={{border:"1px solid #cfcfcf", width:"24px", height:"24px", color:"#000000"}}
+                style={{border:"1px solid #cfcfcf", width:"48px", height:"48px", color:"#000000"}}
             >
 
                 <LeftIcon  />

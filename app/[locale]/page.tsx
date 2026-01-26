@@ -1,5 +1,6 @@
 
 import ResponsiveDrawer from "./DenseMenu";
+import PopupLangMenu from "./PopupLangMenu";
 
 
 export default function Home() {
@@ -63,6 +64,10 @@ export default function Home() {
               <li>study materials</li>
               <li>documentation</li>
             </ul>
+          </div>
+          
+          <div>
+            <PopupLangMenu />
           </div>
 
         </nav>
