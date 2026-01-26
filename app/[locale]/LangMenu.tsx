@@ -40,10 +40,11 @@ export default function LangMenuDrawer() {
                 aria-label="close drawer"
                 onClick={toggleDrawer(false)}
                 sx={{ position: 'absolute', top: 8, left: 8 }}
-                size="large"
+                
+                style={{border:"1px solid #cfcfcf", width:"24px", height:"24px", color:"#000000"}}
             >
 
-                <LeftIcon />
+                <LeftIcon  />
             </IconButton>
             <List sx={{ mt: 5 }}>
                 {menuItems1.map((text, index) => (
@@ -57,20 +58,7 @@ export default function LangMenuDrawer() {
                     </ListItem>
                 ))}
             </List>
-            <Divider />
-            <List>
-                {menuItems2.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton onClick={toggleDrawer(false)}>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <LangMenuDrawer />
+            
         </Box>
     );
 
