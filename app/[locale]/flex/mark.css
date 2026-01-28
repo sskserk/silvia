@@ -1,0 +1,88 @@
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main_subordinate {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.footer_subordinate {
+    margin-top: 0;
+}
+
+header {
+    border: 0px solid red;
+}
+
+.drawer-menu {
+    border: 0px solid green;
+}
+
+footer {
+    margin-top: auto;
+
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 2px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+footer nav>ul {
+    margin: 0px;
+    padding-left: 1rem;
+}
+
+@media (max-width: 300px) {
+    footer nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer nav>div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border: 0px solid red;
+    }
+}
+
+.image-clipper {
+  width: 100vw;           /* Full viewport width */
+  height: 400px;          /* Set desired height */
+  overflow: hidden;       /* Hide overflow (clip) */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-clipper img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center the image */
+  /* Prevent image from resizing */
+  height: auto;
+  width: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  /* Remove if you want to allow vertical clipping as well */
+}
