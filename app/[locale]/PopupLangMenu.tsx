@@ -32,51 +32,6 @@ export interface SimpleDialogProps {
     onClose: (value: string) => void;
 }
 
-function SimpleDialog(props: SimpleDialogProps) {
-    const { onClose, selectedValue, open } = props;
-
-    const handleClose = () => {
-        onClose(selectedValue);
-    };
-
-    const handleListItemClick = (value: string) => {
-        onClose(value);
-    };
-
-    return (
-        <Dialog onClose={handleClose} open={open}>
-            <DialogTitle>Set backup account</DialogTitle>
-            <List sx={{ pt: 0 }}>
-                {emails.map((email) => (
-                    <ListItem disablePadding key={email}>
-                        <ListItemButton onClick={() => handleListItemClick(email)}>
-                            <ListItemAvatar>
-                                <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                                    <PersonIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary={email} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-                <ListItem disablePadding>
-                    <ListItemButton
-                        autoFocus
-                        onClick={() => handleListItemClick('addAccount')}
-                    >
-                        <ListItemAvatar>
-                            <Avatar>
-                                <AddIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Add account" />
-                    </ListItemButton>
-                </ListItem>
-            </List>
-        </Dialog>
-    );
-}
-
 
 export default function PopupLangMenu() {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
@@ -98,19 +53,7 @@ export default function PopupLangMenu() {
     return (
         <>
             <div>
-                {/* <Typography variant="subtitle1" component="div">
-                    Selected: {selectedValue}
-                </Typography>
-                <br />
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Open simple dialog
-                </Button>
-                <SimpleDialog
-
-                    selectedValue={selectedValue}
-                    open={open}
-                    onClose={handleClose}
-                /> */}
+                
                 <Button aria-describedby={id} variant="contained" onClick={handleClick}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

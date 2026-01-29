@@ -1,15 +1,61 @@
-
+'use client'
 import ResponsiveDrawer from "./DenseMenu";
 import PopupLangMenu from "./PopupLangMenu";
 
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+import TextareaAutosize from './comp/TextareaAutosize';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
+import { useRef, useState } from "react";
+import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
+import EditableBoxWithPlaceholder from "./BoxPlace";
+
 
 export default function Home() {
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
+
+  const [isEmpty, setIsEmpty] = useState(true);
+  const ref = useRef(null);
+
+  const handleInput = () => {
+    if (!ref.current) {
+      return;
+    }
+    console.log("Input event:", ref.current.textContent);
+    setIsEmpty(ref.current.textContent.trim().length === 0);
+  };
+
+
+  function addComponent() {
+    //alert("Send button clicked!");
+
+    // if (textRef.current) {
+    //   const element = textRef.current;
+    //   element.style.height = "300px";
+
+    //   const spanElement = document.createElement("span")
+    //   spanElement.textContent = " - Text added!";
+    //   spanElement.style.color = "blue";
+
+    //   element.appendChild(spanElement);
+    // }
+    if (!parentRef.current) {
+      return;
+    }
+
+    const contentArea = parentRef.current.childNodes[1] as HTMLTextAreaElement
+    contentArea.contentEditable = "true";
+
+    const spanElement = document.createElement("span")
+    spanElement.textContent = " - Text added!";
+    spanElement.style.color = "blue";
+
+    contentArea.appendChild(spanElement);
+  }
   return (
     <>
       <header>
@@ -24,7 +70,7 @@ export default function Home() {
             <ResponsiveDrawer />
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-            Welcome to the Flexbox Example
+            Welcome to the Flexbox Example!
           </div>
         </div>
       </header>
@@ -53,96 +99,75 @@ export default function Home() {
             <li>Part of "entity recognition" in modern SEO</li>
           </ul>
         </article>
-        <article style={{paddingLeft:"30px"}}>
+        <article style={{ paddingLeft: "30px" }}>
           <header>Textarea</header>
 
-          <TextareaAutosize
-            id="textareaId"
-            aria-label="minimum height"
-            minRows={3}
-            placeholder="Minimum 3 rows"
-            style={{ width: 200, border: '1px solid #e2882e', borderRadius: '4px', padding: '8px' }}
-            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua."
-          >
-   
-            </TextareaAutosize>
-            <div style={{ position: "relative", width: 400 }}>
-  <TextareaAutosize
-    minRows={4}
-    style={{
-      width: "100%",
-      paddingRight: 48, // space for the button if desired
-    }}
-  />
-  <Button
-    variant="contained"
-    size="small"
-    style={{
-      position: "absolute",
-      right: 8,
-      bottom: 8
-    }}
-  >
-    Send
-  </Button>
-</div>
-<div style={{ position: "relative", width: 400 }}>
-      <TextareaAutosize
-        minRows={4}
-        style={{
-          width: "100%",
-          paddingBottom: "60px", // Make room for the button!
-          fontSize: 16,
-          boxSizing: "border-box",
-          resize: "none"
-        }}
-      />
-      <Button
-        variant="contained"
-        size="small"
-        style={{
-          position: "absolute",
-          right: -8,
-          bottom: 8,
-          zIndex: 1,
-          pointerEvents: "auto" // Clickable over textarea
-        }}
-      >
-        Send
-      </Button>
-    </div>
 
-<div style={{ display: "flex", alignItems: "flex-end", width: 400 }}>
-  <TextareaAutosize
-    minRows={2}
-    style={{
-      flex: 1,
-      marginRight: 8
-    }}
-  />
-  <Button variant="contained">Send</Button>
-</div>
+
+
+
+          <hr />
+
+{/* 
+          <div ref={parentRef}>
+            <Box
+              component="div"
+              ref={ref}
+              onInput={handleInput}
+              suppressContentEditableWarning
+              contentEditable
+              sx={{
+                border: '1px solid',
+                borderColor: 'grey.300',
+                borderRadius: 1,
+                padding: 1,
+                minHeight: 40,
+                outline: 'none',
+                '&:focus': {
+                  borderColor: 'primary.main',
+                  boxShadow: `0 0 0 2px`,
+                }
+              }}
+            >
+              {isEmpty && (
+                <span
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  style={{
+                  position: 'relative',
+                  zIndex: -1,
+                  left: 3,
+                  top: 0,
+                  userSelect: 'none',
+                  pointerEvents: 'none',
+                  outline: 'none'
+                  }}
+                >
+                  Type here...
+                </span>
+              )}
+            </Box>
+          </div>
+
+          <TextField
+            multiline
+            defaultValue="Editable content"
+            variant="outlined"
+            fullWidth
+          /> */}
+
+          <button onClick={addComponent} style={{ marginLeft: "10px" }} >
+            Send
+          </button>
+
         </article>
 
 
+        <article>
+          <EditableBoxWithPlaceholder />
+        </article>
 
-<TextField
-  multiline
-  minRows={3}
-  maxRows={7}
-  variant="outlined"
-  label="Message"
-  InputProps={{
-    endAdornment: (
-      <InputAdornment position="end">
-        <IconButton>
-          <SendIcon />
-        </IconButton>
-      </InputAdornment>
-    ),
-  }}
-/>
+
       </main>
       <footer>
         <nav>
