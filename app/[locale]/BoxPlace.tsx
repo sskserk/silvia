@@ -23,7 +23,7 @@ function EditableBoxWithPlaceholder() {
                     position: 'relative',
                     width: 'fit-content',
                     borderColor: 'grey.300',
-                    borderRadius: 1,
+        
                     minHeight: 40,
                     padding: 1,
                     outline: 'none',
@@ -31,7 +31,11 @@ function EditableBoxWithPlaceholder() {
                     '&:focus-within': {
                         borderColor: 'primary.main',
                         boxShadow: (theme) => `0 0 0 2px ${theme.palette.primary.light}`,
-                    }
+                    },
+                    
+                        boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.04), 0px 4px 12px rgba(0, 0, 0, 0.06)",
+                        borderRadius: "20px",
+                        alignSelf: "stretch"
                 }}
             >
                 {isEmpty && (
@@ -59,13 +63,13 @@ function EditableBoxWithPlaceholder() {
                     spellCheck={false}
                     onInput={handleInput}
                     style={{
-                        border: "1px solid blue",
+                        border: "1px dashed #cfcfcf",
                         outline: 'none',
                         background: 'transparent',
                         minHeight: 36,
                         paddingBottom: "40px",
                         minWidth: '300px',
-                        zIndex: 1,
+                        zIndex: 1
                     }}
                     aria-label="Editable text area"
                 >
