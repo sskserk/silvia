@@ -21,13 +21,13 @@ export default function Home() {
   const [isEmpty, setIsEmpty] = useState(true);
   const ref = useRef(null);
 
-  const handleInput = () => {
-    if (!ref.current) {
-      return;
-    }
-    console.log("Input event:", ref.current.textContent);
-    setIsEmpty(ref.current.textContent.trim().length === 0);
-  };
+  // const handleInput = () => {
+  //   if (!ref.current) {
+  //     return;
+  //   }
+  //   console.log("Input event:", ref.current.textContent);
+  //   setIsEmpty(ref.current.textContent.trim().length === 0);
+  // };
 
 
   function addComponent() {
@@ -82,6 +82,12 @@ export default function Home() {
             <h1>How LinkedIn Impacts your visibility</h1>
 
           </header>
+          <div>
+            <article>
+              <EditableBoxWithPlaceholder />
+            </article>
+
+          </div>
 
           <h2>Traffic & Engagement Signals</h2>
           <ul>
@@ -108,7 +114,7 @@ export default function Home() {
 
           <hr />
 
-{/* 
+          {/* 
           <div ref={parentRef}>
             <Box
               component="div"
@@ -156,16 +162,10 @@ export default function Home() {
             fullWidth
           /> */}
 
-          <button onClick={addComponent} style={{ marginLeft: "10px" }} >
-            Send
-          </button>
 
         </article>
 
 
-        <article>
-          <EditableBoxWithPlaceholder />
-        </article>
 
 
       </main>
