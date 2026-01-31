@@ -85,8 +85,14 @@ footer nav>ul {
     justify-content: center;
 }
 
+.send-button:hover:enabled {
+    background-color: #246643;
+    color: white;
+}
+
 .send-button:disabled {
-    border: 1px solid #E0E0E0;
+    border: none;
+    background-color: #F5F5F5;
     color: #B8B8B8;
 }
 
