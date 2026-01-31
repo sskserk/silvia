@@ -34,10 +34,10 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function CustomScrollButton(props: { direction: 'left' | 'right'; disabled: boolean; [key: string]: any }) {
+function CustomScrollButton(props: { direction: 'left' | 'right'; disabled: boolean;[key: string]: any }) {
     const { direction, disabled, ...other } = props;
 
-   
+
     return (
         <button
             {...other}
@@ -183,7 +183,7 @@ function EditableBoxWithPlaceholder() {
                         outline: 'none',
                         background: 'transparent',
                         minHeight: 36,
-                        paddingBottom: "40px",
+                        paddingBottom: "5px",
                         minWidth: '300px',
                         zIndex: 1
                     }}
@@ -191,10 +191,18 @@ function EditableBoxWithPlaceholder() {
                 >
 
                 </div>
-                <Button size="small" variant="text" onClick={addFormula}>F(x)</Button>
-                <Button
-                    variant="contained"
-                    size="small"
+                <button className='toolset-button' onClick={addFormula}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 10L15 10M10 15L10 5" stroke="#288556" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </button>
+                <button className='toolset-button' onClick={addFormula}>
+                    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.672 3.512L7.24797 18.088H5.69597L3.10397 11.192H-2.92063e-05V9.976H4.14397L6.49597 16.488L11.264 3.512H12.672ZM14.3463 15H12.8103L15.8663 10.664L13.0023 6.536H14.5863L16.8263 9.848L19.0663 6.536H20.5383L17.7063 10.712L20.7303 15H19.1623L16.7463 11.496L14.3463 15Z" fill="#288556" />
+                    </svg>
+                </button>
+                <button className="send-button"
+
                     disabled={isEmpty}
                     style={{
                         position: "absolute",
@@ -204,10 +212,11 @@ function EditableBoxWithPlaceholder() {
                         zIndex: 1,
                         pointerEvents: "auto" // Clickable over textarea
                     }}
-                >
-                    Send
-                </Button>
+                ><svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.75 14.0834L5.75001 0.75M5.75001 0.75L0.75 5.7501M5.75001 0.75L10.75 5.7501" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg></button>
             </Box>
+
             <Box sx={{ width: "300px", marginTop: 2, border: '1px solid grey' }}>
                 <Tabs
                     value={tabValue}
@@ -224,7 +233,7 @@ function EditableBoxWithPlaceholder() {
                     <Tab label="Item Two" />
                     <Tab label="Item Three" />
                     <Tab label="Item Four" />
-                    
+
                 </Tabs>
 
                 <Box sx={{ border: "1px solid blue" }}>
