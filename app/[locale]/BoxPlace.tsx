@@ -2,10 +2,73 @@ import React, { useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import '@/public/mathquill.css';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    dir?: string;
+    index: number;
+    value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+function CustomScrollButton(props: { direction: 'left' | 'right'; disabled: boolean; [key: string]: any }) {
+    const { direction, disabled, ...other } = props;
+
+   
+    return (
+        <button
+            {...other}
+            disabled={disabled}
+            style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                opacity: disabled ? 0.3 : 1,
+                cursor: 'pointer'
+            }}
+            aria-label={direction === 'left' ? "Scroll Tabs Left" : "Scroll Tabs Right"}
+        >
+            {direction === 'left' ? (
+                <span style={{ fontSize: 32, display: 'inline-block', lineHeight: 1 }}>&#8592;</span>
+            ) : (
+                <span style={{ fontSize: 32, display: 'inline-block', lineHeight: 1 }}>&#8594;</span>
+            )}
+        </button>
+    );
+}
 
 function EditableBoxWithPlaceholder() {
     const [isEmpty, setIsEmpty] = useState(true);
     const ref = useRef<HTMLDivElement>(null);
+
+    const [tabValue, setTabValue] = React.useState(0);
+
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setTabValue(newValue);
+    };
 
     const handleInput = () => {
         if (!ref.current) {
@@ -41,7 +104,7 @@ function EditableBoxWithPlaceholder() {
             autoParenthesizedFunctions: 'sin cos ln',
             handlers: {
                 edit: function () {
-                //    processContentChange();
+                    //    processContentChange();
                 },
             },
         });
@@ -144,6 +207,35 @@ function EditableBoxWithPlaceholder() {
                 >
                     Send
                 </Button>
+            </Box>
+            <Box sx={{ width: "300px", marginTop: 2, border: '1px solid grey' }}>
+                <Tabs
+                    value={tabValue}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons
+                    slots={{
+                        scrollButtons: CustomScrollButton
+                    }}
+                    allowScrollButtonsMobile
+                    aria-label="scrollable force tabs example"
+                >
+                    <Tab label="Item One" />
+                    <Tab label="Item Two" />
+                    <Tab label="Item Three" />
+                    <Tab label="Item Four" />
+                    
+                </Tabs>
+
+                <Box sx={{ border: "1px solid blue" }}>
+                    <TabPanel value={tabValue} index={0}>Item One</TabPanel>
+                    <TabPanel value={tabValue} index={1}>Item Two</TabPanel>
+                    <TabPanel value={tabValue} index={2}>Item Three</TabPanel>
+                    <TabPanel value={tabValue} index={3}>
+                        <Button>Hello</Button>
+                    </TabPanel>
+
+                </Box>
             </Box>
 
         </div>
