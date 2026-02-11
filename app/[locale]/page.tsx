@@ -1,25 +1,20 @@
-'use client'
+'use client';
 import ResponsiveDrawer from "./DenseMenu";
 import PopupLangMenu from "./PopupLangMenu";
 
-import TextareaAutosize from './comp/TextareaAutosize';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import SendIcon from '@mui/icons-material/Send';
-import { useRef, useState } from "react";
-import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
+
+import { useRef } from "react";
+
 import EditableBoxWithPlaceholder from "./BoxPlace";
+
 
 
 export default function Home() {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
 
-  const [isEmpty, setIsEmpty] = useState(true);
-  const ref = useRef(null);
+ // const [isEmpty, setIsEmpty] = useState(true);
+ // const ref = useRef(null);
 
   // const handleInput = () => {
   //   if (!ref.current) {
