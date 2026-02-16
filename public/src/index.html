@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASANA - Interactive Education Solutions — Study, Practice, and Master Math with Visual Tools, Instant Feedback, and Teacher Support</title>
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles.css">
+       
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <svg fill="none" viewBox="0 0 24 24">
+                            <path d="M4 9L20 9M4 15L20 15" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="logo">DASANA</div>
+                </div>
+                <nav id="nav-menu">
+                    <ul>
+                        <li><a href="#about" onclick="closeMenu()"><span class="nav-en">About</span><span class="nav-ko hidden">소개</span></a></li>
+                        <li><a href="#platform" onclick="closeMenu()"><span class="nav-en">Platform</span><span class="nav-ko hidden">플랫폼</span></a></li>
+                        <li><a href="#who" onclick="closeMenu()"><span class="nav-en">Who It's For</span><span class="nav-ko hidden">대상</span></a></li>
+                        <li><a href="#approach" onclick="closeMenu()"><span class="nav-en">Approach</span><span class="nav-ko hidden">접근 방식</span></a></li>
+                    </ul>
+                </nav>
+                <button class="lang-button" onclick="toggleLanguage()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- English Content -->
+    <div id="content-en">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>DASANA</h1>
+                <p>Interactive education platforms for students and teachers</p>
+            </div>
+        </section>
+
+        <!-- About DASANA -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-card">
+                    <h2 class="section-title">About DASANA</h2>
+                    <p class="section-content">
+                        DASANA helps students practice and improve their math skills online. We provide interactive exercises, clear visual explanations, and automated checks that give students immediate results.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Platform -->
+        <section id="platform" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Platform</h2>
+                <div class="section-card">
+                    <p class="section-content">
+                        Interactive courses and practice sets for all skill levels. Visualizations—graphs, animations, and diagrams—make abstract ideas easier to see. Automatic checking gives instant feedback on practice problems, and teachers can step in with comments or small-group help. The platform is available immediately on the web and mobile so students can start practicing right away.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section id="who" class="section">
+            <div class="container">
+                <h2 class="section-title">Who It's For</h2>
+                <div class="section-card">
+                    <p class="section-content">
+                        Students at school and university, people preparing for exams, classroom teachers, tutors, and lifelong learners who want regular practice. The platform supports self-study and teacher-led assignments so both independent learners and classroom groups benefit.
+                    </p>
+                    <div class="tags">
+                        <span class="tag tag-blue">Students</span>
+                        <span class="tag tag-green">Teachers</span>
+                        <span class="tag tag-blue">Exam Preparation</span>
+                        <span class="tag tag-green">Tutors</span>
+                        <span class="tag tag-blue">Self-Study</span>
+                        <span class="tag tag-green">Lifelong Learners</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Approach -->
+        <section id="approach" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Approach</h2>
+                <div class="approach-grid">
+                    <div class="approach-item">
+                        <h3>Practice & Feedback</h3>
+                        <p class="section-content">
+                            We center practice and clear explanation. Students work through short practice problems and see results immediately. Teachers use those results to offer timely guidance. Visual explanations and worked examples show how to solve problems step by step. Progress reports highlight where a student needs more practice so teachers and learners can focus effort efficiently.
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>Visual Learning</h3>
+                        <p class="section-content">
+                            Complex mathematical ideas are presented through visual simple explanations, animations, and diagrams that make abstract concepts easier to understand. Students receive assignments that are checked automatically by the system, providing immediate feedback so they can learn from their mistakes right away. The learning experience adapts to each student's strengths and weaknesses, creating a customized path through the material.
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>Progress Tracking</h3>
+                        <p class="section-content">
+                            Teachers and parents can view comprehensive reports tracking student progress, showing test scores, completed lessons, time spent on different topics, and areas that may need extra attention.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Korean Content -->
+    <div id="content-ko" class="hidden">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>DASANA</h1>
+                <p>학생과 교사를 위한 대화형 교육 플랫폼</p>
+            </div>
+        </section>
+
+        <!-- About DASANA -->
+        <section class="section">
+            <div class="container">
+                <div class="section-card">
+                    <h2 class="section-title">DASANA 소개</h2>
+                    <p class="section-content">
+                        DASANA는 학생들이 온라인에서 수학 실력을 연습하고 향상하도록 돕습니다. 대화형 연습 문제, 명확한 시각적 설명, 즉시 결과를 제공하는 자동 채점 시스템을 제공하며, 실제 수학 교사가 과제를 검토하고 지도합니다. 교사는 학습자가 다음에 무엇을 연습해야 할지 알 수 있도록 맞춤형 과제를 만듭니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">플랫폼</h2>
+                <div class="section-card">
+                    <p class="section-content">
+                        모든 수준의 학습자를 위한 대화형 강의와 연습 문제가 준비되어 있습니다. 그래프, 애니메이션, 도해와 같은 시각화는 추상적인 개념을 더 쉽게 보여줍니다. 자동 채점은 연습 문제에 즉각적인 피드백을 제공하며, 교사가 코멘트나 소그룹 지원으로 개입할 수 있습니다. 웹과 모바일에서 즉시 이용 가능하여 학생들이 바로 연습을 시작할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It's For -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">대상</h2>
+                <div class="section-card">
+                    <p class="section-content">
+                        학교와 대학의 학생, 시험을 준비하는 학습자, 교실 교사, 개인 교사(튜터), 정기적인 연습을 원하는 평생 학습자를 대상으로 합니다. 이 플랫폼은 자율 학습과 교사가 주도하는 과제를 모두 지원하여 독학하는 학습자와 교실 단위 모두에게 유용합니다.
+                    </p>
+                    <div class="tags">
+                        <span class="tag tag-blue">학생</span>
+                        <span class="tag tag-green">교사</span>
+                        <span class="tag tag-blue">시험 준비</span>
+                        <span class="tag tag-green">튜터</span>
+                        <span class="tag tag-blue">자율 학습</span>
+                        <span class="tag tag-green">평생 학습자</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Approach -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">접근 방식</h2>
+                <div class="approach-grid">
+                    <div class="approach-item">
+                        <h3>연습과 피드백</h3>
+                        <p class="section-content">
+                            우리는 연습과 명확한 설명을 중심에 둡니다. 학생은 짧은 연습 문제를 풀며 즉시 결과를 확인하고, 교사는 그 결과를 바탕으로 시기적절한 지도를 제공합니다. 시각적 설명과 풀이 예시는 문제 해결 과정을 단계별로 보여줍니다. 진행 보고서는 학생이 더 연습해야 할 부분을 알려주어 교사와 학습자가 효율적으로 노력을 집중할 수 있게 합니다.
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>시각적 학습</h3>
+                        <p class="section-content">
+                            복잡한 수학적 개념은 간단한 시각적 설명, 애니메이션, 도표를 통해 제시되어 추상적인 개념을 더 쉽게 이해할 수 있습니다. 학생들은 시스템에 의해 자동으로 확인되는 과제를 받아 즉각적인 피드백을 제공받으므로 실수로부터 즉시 배울 수 있습니다. 학습 경험은 각 학생의 강점과 약점에 맞춰 조정되어 맞춤형 학습 경로를 만듭니다.
+                        </p>
+                    </div>
+                    <div class="approach-item">
+                        <h3>진행 상황 추적</h3>
+                        <p class="section-content">
+                            교사와 부모는 학생의 진행 상황을 추적하는 종합 보고서를 볼 수 있으며, 시험 점수, 완료된 수업, 다양한 주제에 소요된 시간, 추가 주의가 필요한 영역을 보여줍니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DASANA</h3>
+                    <p id="footer-desc-en">Online math practice platform for students and teachers.</p>
+                    <p id="footer-desc-ko" class="hidden">학생과 교사를 위한 온라인 수학 연습 플랫폼.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 id="footer-links-title-en">Quick Links</h4>
+                    <h4 id="footer-links-title-ko" class="hidden">빠른 링크</h4>
+                    <ul>
+                        <li><a href="#about"><span class="link-en">About</span><span class="link-ko hidden">소개</span></a></li>
+                        <li><a href="#platform"><span class="link-en">Platform</span><span class="link-ko hidden">플랫폼</span></a></li>
+                        <li><a href="#who"><span class="link-en">Who It's For</span><span class="link-ko hidden">대상</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 id="footer-resources-title-en">Resources</h4>
+                    <h4 id="footer-resources-title-ko" class="hidden">자료</h4>
+                    <ul>
+                        <li><a href="#"><span class="link-en">Help Center</span><span class="link-ko hidden">도움말 센터</span></a></li>
+                        <li><a href="#"><span class="link-en">Learning Materials</span><span class="link-ko hidden">학습 자료</span></a></li>
+                        <li><a href="#"><span class="link-en">Contact</span><span class="link-ko hidden">연락처</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2026 DASANA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ko' : 'en';
+            
+            document.getElementById('content-en').classList.toggle('hidden', currentLang !== 'en');
+            document.getElementById('content-ko').classList.toggle('hidden', currentLang !== 'ko');
+            
+            document.getElementById('current-lang').textContent = currentLang === 'en' ? 'EN' : 'KO';
+            
+            document.querySelectorAll('.nav-en').forEach(el => el.classList.toggle('hidden', currentLang !== 'en'));
+            document.querySelectorAll('.nav-ko').forEach(el => el.classList.toggle('hidden', currentLang !== 'ko'));
+            
+            document.getElementById('footer-desc-en').classList.toggle('hidden', currentLang !== 'en');
+            document.getElementById('footer-desc-ko').classList.toggle('hidden', currentLang !== 'ko');
+            document.getElementById('footer-links-title-en').classList.toggle('hidden', currentLang !== 'en');
+            document.getElementById('footer-links-title-ko').classList.toggle('hidden', currentLang !== 'ko');
+            document.getElementById('footer-resources-title-en').classList.toggle('hidden', currentLang !== 'en');
+            document.getElementById('footer-resources-title-ko').classList.toggle('hidden', currentLang !== 'ko');
+            
+            document.querySelectorAll('.link-en').forEach(el => el.classList.toggle('hidden', currentLang !== 'en'));
+            document.querySelectorAll('.link-ko').forEach(el => el.classList.toggle('hidden', currentLang !== 'ko'));
+            
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('mobile-open');
+        }
+
+        function closeMenu() {
+            document.getElementById('nav-menu').classList.remove('mobile-open');
+        }
+
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('nav-menu');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (!nav.contains(event.target) && !menuIcon.contains(event.target)) {
+                nav.classList.remove('mobile-open');
+            }
+        });
+    </script>
+</body>
+</html>
