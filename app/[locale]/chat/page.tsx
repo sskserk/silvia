@@ -35,7 +35,7 @@ export default function ChatPage() {
                 ]}
 
 
-                    centerIcon={<Avatar alt="Muzzy" src="/muzzy-avatar.png" sx={{ width: 60, height: 60 }} />}
+                    centerIcon={<Avatar alt="Muzzy" src="/avatar.png" sx={{ width: 60, height: 60 }} />}
 
                     radius1={80}
                     radius2={120}
