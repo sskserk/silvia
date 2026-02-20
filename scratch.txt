@@ -1,46 +1,90 @@
-/* Button */
+                
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 16px 32px;
-
-width: 354px;
-height: 56px;
-
-background: #288556;
-border-radius: 12px;
-
-/* Inside auto layout */
-flex: none;
-order: 2;
-align-self: stretch;
-flex-grow: 0;
+describe('i18n', () => {
+    it('should return correct translation', async () => {
+        // iterate over subfolders L1 in /app/[locale] and print their names
+        const fs = await import('fs');
+        const path = await import('path');
+        const appPath = path.resolve(process.cwd(), 'app/\[locale\]');
+        const foldersAsNamespaces = fs.readdirSync(appPath).filter(file => fs.statSync(path.join(appPath, file)).isDirectory());
 
 
-/* Click */
-
-width: 117px;
-height: 20px;
-
-/* Headline - Body/Medium */
-font-family: 'General Sans Variable';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height, or 125% */
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: -0.02em;
-
-color: #FFFFFF;
+        // make sure that the translation files exist for each namespace and locale
+        const locales = ['en', 'nl']; // example locales
+        for (const namespace of foldersAsNamespaces) {
+            for (const locale of locales) {
+                const translationFilePath = path.join('messages', `${locale}/${namespace}.json`);
+                //console.log(`Checking for translation file: ${translationFilePath}`);
+                if (!fs.existsSync(translationFilePath)) {
+                    // create an empty translation file and path if it doesn't exist
+                    fs.mkdirSync(path.dirname(translationFilePath), { recursive: true });
+                    fs.writeFileSync(translationFilePath, JSON.stringify({}));
+                }
+            }
+        }
 
 
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;
+
+        // not that we have the translation files (possibly empty) and namespaces as folder, lets traverse in all nested ts/tsx files in app/[locale] 
+        // and extract the translation keys by looking for t('key') or translator('key') calls and check that the keys exist 
+        // in the corresponding translation file.
+        // the code not just parses the files, it traverses the AST to find the translation function calls and extract the keys, then checks if the keys exist in the translation files.
+
+        const requiredLocales = ['nl']; // example locales to check for translations
+
+        for (const namespace of foldersAsNamespaces) {
+            const files = getAllJsxFiles(path.join(appPath, namespace));
+            for (const file of files) {
+                const code = fs.readFileSync(file, 'utf-8');
+                const ast = parser.parse(code, {
+                    sourceType: 'module',
+                    plugins: ['jsx', 'typescript'],
+                });
+
+                traverse(ast, {
+                    CallExpression(path) {
+                        const callee = path.node.callee;
+                        if (
+                            (callee.type === 'Identifier' && (callee.name === 't' || callee.name === 'translator')) ||
+                            (callee.type === 'MemberExpression' && callee.property.type === 'Identifier' && (callee.property.name === 't' || callee.property.name === 'translator'))
+                        ) {
+                            const args = path.node.arguments;
+                            if (args.length > 0 && args[0].type === 'StringLiteral') {
+                                const requestedKey = args[0].value;
+                                // now we need to check if this key exists in the corresponding translation file for the namespace and required locales
+                                for (const locale of requiredLocales) {
+                                    const translationFilePath = `messages/${locale}.json`;
+                                    const translations = JSON.parse(fs.readFileSync(translationFilePath, 'utf-8'));
+
+                                    // make sure to check for nested keys if the requestedKey contains dots, e.g. 'common.welcome'
+                                    const keyParts = requestedKey
+                                    let currentLevel = translations;
+                                    let keyExists = true;
+                                    for (const part of keyParts) {
+                                        if (currentLevel && Object.prototype.hasOwnProperty.call(currentLevel, part)) {
+                                            currentLevel = currentLevel[part];
+                                        } else {
+                                            keyExists = false;
+                                            break;
+                                        }
+                                    }
+
+
+
+                                    if (!keyExists) {
+                                        throw new Error(`Missing translation for key "${requestedKey}" in locale "${locale}" and namespace "${namespace}" in file "${file}"`);
+                                    }
+                                    //expect(translations).toHaveProperty(requestedKey);
+                                }
+                            }
+                        }
+                    },
+                });
+            }
+        }
+
+
+    })
+}
+
+)

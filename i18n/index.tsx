@@ -17,23 +17,33 @@ export default async function loadBerichten(locale: string, namespaces:string[] 
     return resources
 }
 
+ function format(str: string, params: Record<string, any>): string {
+    return str.replace(/{{([^}]+)}}/g, (_, key) => params[key]);
+ }
 
-
-export async function useServerTranslation(messages: Record<string, string>): Promise<(key: string) => string> {
+export async function useServerTranslation(messages: Record<string, string>): Promise<(key: string, params?: Record<string, any>) => string> {
 
     return (key: string, params?: Record<string, any>): string => {   
+
+        let resultValue = key
         if (messages.hasOwnProperty(key)) {
 
             const value = messages[key];
             console.log(`Translation found for key "${key}": "${value}", len is ${value.length} `);
             if (value.trim().length === 0) {
                 console.log(`Translation for key "${key}" is empty. Returning key as fallback.`);
-                return key
+                resultValue = key;
+            } else {
+                
+                resultValue = value;
             }
-            return value;
+        } 
+
+        if (params) {
+            resultValue = format(resultValue, params);
         }
 
-        console.log(`Translation key "${key}" not found in messages.`);
-        return key;
+        console.log(`Translation value for  "${key}"  is "${resultValue}" .`);
+        return resultValue;
     }
 }

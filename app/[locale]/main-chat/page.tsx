@@ -3,13 +3,8 @@ import './mark.css'
 import ChatPage from '../chat/page'
 import GreetingArea from './page.client';
 import loadBerichten, { useServerTranslation } from '@/i18n';
-import { I18nProvider, useTranslation } from '@/i18n/context';
+import { I18nProvider } from '@/i18n/context';
 
-
-
-type Props = {
-    locale: string;
-};
 
 export default async function ChatWindow({ params }: { params: { locale: string } }) {
     const { locale } = await params;
@@ -31,8 +26,8 @@ export default async function ChatWindow({ params }: { params: { locale: string 
                         <div>
                             <GreetingArea />
                         </div>
-                        <div>
-                            <h1>Hello world</h1>
+                        <div style={{border: "1px solid red"}}>
+                            {t('{{days}} days left in your free trial. Hi {{hours}}', { days: 3, hours:5 })}
                         </div>
                         <div>
                             I'm your AI agent

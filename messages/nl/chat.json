@@ -1,0 +1,12 @@
+{
+  "Welcome here": "Welkom hier",
+  "Greeting": "GREETING_NL",
+  "Yahoo": "YAHOO_NL",
+  "home.welcome": "Welkom bij Chat",
+  "home.description": "HOME_DESCRIPTION_NL",
+  "{{count}} days ago": "{{count}} dagen geleden",
+  "home.nonexistent_key": "HOME_NONEXISTENT_KEY_NL",
+  "Submit question": "Stel een vraag",
+  "Ask me anything...": "Vraag me iets...",
+  "home.nonexistent.key": "non existing key"
+}

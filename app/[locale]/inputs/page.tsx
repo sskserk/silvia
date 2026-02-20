@@ -5,32 +5,16 @@ import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import { Avatar } from '@mui/material';
-import avatarBoy from '@/public/avatar.png';
-import FormControl from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormHelperText from '@mui/material/FormHelperText';
-import IconButton from '@mui/material/IconButton';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Visibility from '@mui/icons-material/Visibility';
-import Box from '@mui/material/Box';
 import './styles.css';
-import validator from 'validator';
-import OtpInput from 'react-otp-input';
 import SecurityCodeForm from './SecurityCode';
-import { Security } from '@mui/icons-material';
 import PasswordForm from './PasswordForm';
 import LangForm from './LangForm';
 import EmailForm from './EmailForm';
 
 export default function InputResearch() {
     const theme = useTheme();
-
-
-    const [emailValue, setEmailValue] = React.useState("");
-    const [passwordValue, setPasswordValue] = React.useState("");
+    const [ , setEmailValue] = React.useState("");
+    const [ , setPasswordValue] = React.useState("");
     const [otpValue, setOtpValue] = React.useState("");
     const [langValue, setLangValue] = React.useState("en");
 
